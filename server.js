@@ -6,7 +6,7 @@ const bodyParser = require("body-parser");
 const path = require("path");
 
 // Importing routes for admin and shop
-const adminData = require('./routes/admin');
+const adminRoutes = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
 
 // Creating an instance of express
@@ -24,7 +24,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 
 // Using the imported routes
-app.use("/admin", adminData.routes);
+app.use("/admin", adminRoutes);
 app.use(shopRoutes);
 
 // Middleware to handle 404 errors
