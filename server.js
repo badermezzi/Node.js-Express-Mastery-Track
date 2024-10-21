@@ -9,12 +9,12 @@ const path = require("path");
 const adminRoutes = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
 
+const errorControllers = require('./controllers/error')
+
 // Creating an instance of express
 const app = express();
 
-// app.set("view engine", "pug")
-// app.set("views", "views")
-
+// Setting the view engine to EJS and specifying the views directory
 app.set("view engine", "ejs")
 app.set("views", "views")
 
@@ -28,9 +28,7 @@ app.use("/admin", adminRoutes);
 app.use(shopRoutes);
 
 // Middleware to handle 404 errors
-app.use((req, res, next) => {
-    res.status(404).render("404", { pageTitle: "404 | Page Not Found!" })
-});
+app.use(errorControllers.get404Page);
 
 // Starting the server on port 3000
 app.listen(3000);
