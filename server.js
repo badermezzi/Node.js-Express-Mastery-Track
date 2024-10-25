@@ -34,5 +34,3 @@ app.use(errorControllers.get404Page);
 app.listen(3000, () => {
     console.log('Server is running on port 3000');
 });
-
-console.log('Server is starting...');
